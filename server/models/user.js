@@ -7,9 +7,12 @@ var userSchema = new Schema({
     name: { type: String, required: true },
     contactNo: { type: String, required: true },
     address: { type: String, required: true }
-}, {
+}
+/*,
+    {
     versionKey: false
-});
+    }*/
+    );
 
 var user = mongoose.model('users', userSchema);
 
