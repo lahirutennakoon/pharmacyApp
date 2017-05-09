@@ -1,32 +1,12 @@
-<!-- index.html -->
-<h2>Prescriptions Listing</h2>
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
-        <div class="x_title">
-            <h2>Hover rows <small>Try hovering over the rows</small></h2>
-            <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
+
         <div class="x_content">
             <table class="table table-hover" ng-if="prescriptions.length>0">
                 <thead>
+                <caption><h2>Prescriptions Listing</h2></caption>
                 <tr>
                 <tr>
-                    <th>SNo.</th>
                     <th>Patient Name</th>
                     <th>Patient Age</th>
                     <th>Date</th>
@@ -37,14 +17,14 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="prescription in prescriptions">
-                    <td>1</td>
                     <td> {{ prescription.patientName }}</td>
                     <td> {{ prescription.patientAge }} </td>
-                    <td>{{ prescription.date }}</td>
+                    <td>{{ prescription.date | date:'MM/dd/yyyy' }}</td>
                     <td>{{ prescription.drugs }}</td>
                     <td>
                         <a ui-sref="editPrescription({id:prescription._id})">Edit</a> |
                         <a href="#" ng-click="deletePrescription(prescription._id)">Delete</a>
+                        <a href="#" class="btn btn-success btn-sm" role="button">Dispense Drugs</a>
                     </td>
 
                 </tr>

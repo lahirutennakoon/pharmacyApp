@@ -18,7 +18,7 @@
                 url = globalConfig.apiAddress + "/user/" + id;
                 return $http.get(url);
             },
-            createUser: function(user) {
+            add_user: function(user) {
                 url = globalConfig.apiAddress + "/user";
                 return $http.post(url, user);
             },

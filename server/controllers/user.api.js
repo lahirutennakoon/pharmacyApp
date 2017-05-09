@@ -33,14 +33,14 @@ router.get("/", function(req, res) {
     var id = req.params.id;
     var obj = req.body;
 
-    user.findByIdAndUpdate(id, { name: obj.name, contactNo: obj.contactNo, address: obj.address },
+    user.findByIdAndUpdate(id, { name: obj.name, email: obj.email, number: obj.number, userType: obj.userType, password: obj.password },
         function(err) {
             if (err) {
                 res.send("error");
                 return;
             }
             res.send("updated");
-        });
+        })
 }).delete("/:id", function(req, res) {
     var id = req.params.id;
     user.findByIdAndRemove(id, function(err) {

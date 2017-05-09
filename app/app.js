@@ -6,15 +6,21 @@
     ])
         .config(function($stateProvider, $urlRouterProvider)
         {
-            $urlRouterProvider.otherwise("/");
+            $urlRouterProvider.otherwise("login.html");
 
-            $stateProvider.state("users", {
-                url: "/",
+            $stateProvider.state("login", {
+                url: "/login.html",
+                templateUrl: "/login.html"
+            }).state("home", {
+                url: "/home.html",
+                templateUrl: "/home.html"
+            }).state("users", {
+                url: "/users",
                 templateUrl: "/views/user/index.html",
                 controller: "userController"
-            }).state("create", {
-                url: "/create",
-                templateUrl: "/views/user/create.html",
+            }).state("add_user", {
+                url: "/adduser",
+                templateUrl: "/views/user/add_user.html",
                 controller: "userController"
             }).state("edit", {
                 url: "/edit/:id",
@@ -40,6 +46,50 @@
                 url: "/prescription/detailsPrescription/:id",
                 templateUrl: "/views/prescription/details.html",
                 controller: "prescriptionController"
+
+                //ashen
+            }).state("drugs", {
+                url: "/drugtable",
+                templateUrl: "/views/drugAS/druglist.html",
+                controller: "drugControllerAS"
+
+            }).state("createDrug", {
+                url: "/createDrug",
+                templateUrl: "/views/drugAS/createDrug.html",
+                controller: "drugControllerAS"
+
+            }).state("editDrug", {
+                url: "/drugtable/createDrug/:id",
+                templateUrl: "/views/drugAS/createDrug.html",
+                controller: "drugControllerAS"
+
+            }).state("placeOrder", {
+                url: "/drugtable/placeOrder/:id",
+                templateUrl: "/views/drug/mailOrder.html",
+                controller: "drugControllerAS"
+
+
+            }).state("emails", {
+                url: "/mailtable",
+                templateUrl: "/views/drugAS/order.html",
+                controller: "emailController"
+
+            }).state("sendMail", {
+                url: "/sendMail",
+                templateUrl: "/views/drugAS/placeOrder.html",
+                controller: "emailController"
+
+            }).state("editMail", {
+                url: "/editMail/:id",
+                templateUrl: "/views/drugAS/placeOrder.html",
+                controller: "emailController"
+
+
+            //Ruki
+            }).state("addDrug",{
+                url:"/addDrug",
+                templateUrl:"/views/Drug/add.html",
+                controller:"drugController"
             });
         })
         .constant("globalConfig", {
