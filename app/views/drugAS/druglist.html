@@ -1,0 +1,72 @@
+<!-- index.html -->
+<hr>
+<div><li><a ui-sref="drugs">Drugs</a></li>
+    <li><a ui-sref="createDrug">Add Drugs</a></li>
+
+    <li><a ui-sref="emails">Order History</a></li>
+
+    <li><a ui-sref="sendMail">Place Order</a></li>
+</div>
+<div class="col-md-10 col-sm-10 col-xs-10">
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Drug List </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-hover" ng-if="drugs.length>0">
+                <thead>
+                <tr>
+                <tr>
+                    <th>SNo.</th>
+                    <th>Drug Name</th>
+                    <th>Unit Type</th>
+                    <th>Drug Category</th>
+                    <th>Drug Quantity</th>
+                    <th>Send Mail</th>
+
+                </tr>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="drug in drugs">
+                    <td>1</td>
+                    <td> {{ drug.drugName }}</td>
+                    <td> {{ drug.UnitType }}</td>
+                    <td> {{ drug.DrugC }} </td>
+                    <td>{{ drug.DrugQ }}</td>
+                    <td> <a ui-sref="placeOrder({id:drug._id})"><button class="btn btn-primary">Place Order</button></a></td>
+                    <td>
+                        <a ui-sref="editDrug({id:drug._id})">Edit</a> /
+                        <a href="#" ng-click="deleteDrug(drug._id)"><button class="btn btn-primary">Delete</button></a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+            <div ng-if="drugs.length==0">
+                No record found !!
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+

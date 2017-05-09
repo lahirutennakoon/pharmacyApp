@@ -5,10 +5,11 @@ var mongoose = require("mongoose"),
 var userSchema = new Schema({
     _id: { type: objectId, auto: true },
     name: { type: String, required: true },
-    contactNo: { type: String, required: true },
-    address: { type: String, required: true }
-}, {
-    versionKey: false
+    email: {type: String, required:true},
+    number: { type: String, required: true },
+    userType: {type: String, required:true},
+    password: {type: String, required:true}
+
 });
 
 var user = mongoose.model('users', userSchema);

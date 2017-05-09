@@ -39,22 +39,27 @@
             });
 
             $scope.saveData = function(user) {
+               // console.log("saveData 1");
                 if ($scope.userForm.$valid) {
                     userService.updateUser(user).then(function(res) {
                         if (res.data == "updated") {
                             $state.go("users");
+                         //   console.log("saveData 2");
+
                         }
                     }).catch(function(err) {
                         console.log(err);
                     });
                 }
             };
-        } else if ($state.current.name == "create") {
-            $rootScope.Title = "Create User";
+        } else if ($state.current.name == "add_user") {
+            $rootScope.Title = "Add User";
             $scope.saveData = function(user) {
+               // console.log("saveData 3");
+
                 $scope.IsSubmit = true;
                 if ($scope.userForm.$valid) {
-                    userService.createUser(user).then(function(res) {
+                    userService.add_user(user).then(function(res) {
                         if (res.data == "created") {
                             $state.go("users");
                         }
