@@ -65,7 +65,7 @@
 
             }).state("placeOrder", {
                 url: "/drugtable/placeOrder/:id",
-                templateUrl: "/views/drug/mailOrder.html",
+                templateUrl: "/views/drugAS/mailOrder.html",
                 controller: "drugControllerAS"
 
 
