@@ -2,7 +2,7 @@
 <h2 ng-hide="email._id!=null"> </h2>
 <h2 ng-show="email._id!=null">Drug Request Mail Sender</h2>
 <hr>
-<form name="emailForm" ng-submit="saveData(email)" novalidate class="form-horizontal">
+<form name="mailForm" ng-submit="saveData(email)" novalidate class="form-horizontal">
 
     <div class="form-group">
         <label class="col-md-1">From :</label>
@@ -55,7 +55,7 @@ Chief Pharmasist
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Send" class="btn btn-primary" />
 
-            <a ui-sref="emails" class="btn btn-warning">Cancel</a>
+            <a ui-sref="drugs" class="btn btn-warning">Cancel</a>
         </div>
     </div>
 </form>

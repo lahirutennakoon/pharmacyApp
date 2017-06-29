@@ -74,15 +74,7 @@
                 templateUrl: "/views/drugAS/order.html",
                 controller: "emailController"
 
-            }).state("sendMail", {
-                url: "/sendMail",
-                templateUrl: "/views/drugAS/placeOrder.html",
-                controller: "emailController"
 
-            }).state("editMail", {
-                url: "/editMail/:id",
-                templateUrl: "/views/drugAS/placeOrder.html",
-                controller: "emailController"
 
 
             //Ruki

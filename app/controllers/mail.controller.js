@@ -50,7 +50,7 @@
 
 
             };
-        } else if ($state.current.name == "sendMail") {
+        } else if ($state.current.name == "createMail") {
             $rootScope.Title = "Create email";
             $scope.saveData = function(email) {
                 $scope.IsSubmit = true;
