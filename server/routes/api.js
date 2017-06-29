@@ -13,4 +13,8 @@ router.use("/drugAS", require("../controllers/drug.apiAS.js"));
 //route for drugs
 router.use("/drug",require("../controllers/drug.api"));
 
+//routes for email api
+router.use("/email", require("../controllers/email.api"));
+
+
 module.exports = router;
