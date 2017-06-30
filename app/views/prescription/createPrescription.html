@@ -1,34 +1,73 @@
+<div ng-controller="prescriptionController">
 <h2 ng-show="prescription._id!=null">Edit</h2>
 <h2 ng-hide="prescription._id!=null">Create</h2>
 <hr>
 <form name="prescriptionForm" ng-submit="saveData(prescription)" novalidate class="form-horizontal">
     <div class="form-group">
-        <label class="col-md-2">Patient's Name</label>
+        <label class="col-md-2">Doctor's Name</label>
         <div class="col-md-10">
-            <input type="text" ng-model="prescription.patientName" name="patientName" ng-required="true" class="form-control"/>
-            <p ng-show="prescriptionForm.name.$error.required && (prescriptionForm.$submitted || prescriptionForm.name.$dirty)" class="text-danger">Please Enter Name</p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2">Patient's Age</label>
-        <div class="col-md-10">
-            <input type="number" ng-model="prescription.patientAge" name="patientAge" ng-required="true" class="form-control"/>
-            <p ng-show="prescriptionForm.address.$error.required && (prescriptionForm.$submitted || prescriptionForm.address.$dirty)" class="text-danger">Please Enter Address</p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2">Date</label>
-        <div class="col-md-10">
-            <input type="date" ng-model="prescription.date" name="date" ng-required="true" class="form-control"/>
-            <p ng-show="prescriptionForm.contactNo.$error.required && (prescriptionForm.$submitted || prescriptionForm.contactNo.$dirty)" class="text-danger">Please Enter Contact No.</p>
+            <input type="text" ng-model="prescription.doctorName" name="doctorName" ng-required="true" class="form-control"/>
+            <p ng-show="prescriptionForm.doctorName.$error.required && (prescriptionForm.$submitted || prescriptionForm.doctorName.$dirty)" class="text-danger">Please Enter Doctor's Name</p>
         </div>
     </div>
 
     <div class="form-group">
+        <label class="col-md-2">Patient's Name</label>
+        <div class="col-md-10">
+            <input type="text" ng-model="prescription.patientName" name="patientName" ng-required="true" class="form-control"/>
+            <p ng-show="prescriptionForm.patientName.$error.required && (prescriptionForm.$submitted || prescriptionForm.patientName.$dirty)" class="text-danger">Please Enter Patient's Name</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2">Patient's Age</label>
+        <div class="col-md-10">
+            <input type="number" ng-model="prescription.patientAge" name="patientAge" ng-required="true" class="form-control"/>
+            <p ng-show="prescriptionForm.patientAge.$error.required && (prescriptionForm.$submitted || prescriptionForm.patientAge.$dirty)" class="text-danger">Please Enter Age</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2">Diagnosis</label>
+        <div class="col-md-10">
+            <input type="text" ng-model="prescription.diagnosis" name="diagnosis" ng-required="true" class="form-control"/>
+            <p ng-show="prescriptionForm.diagnosis.$error.required && (prescriptionForm.$submitted || prescriptionForm.diagnosis.$dirty)" class="text-danger">Please Enter Age</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2">Date</label>
+        <div class="col-md-10">
+            <input type="date" ng-model="prescription.date" name="date" ng-required="true" class="form-control"/>
+            <p ng-show="prescriptionForm.date.$error.required && (prescriptionForm.$submitted || prescriptionForm.date.$dirty)" class="text-danger">Please Enter Date</p>
+        </div>
+    </div>
+
+
+    <div class="form-group">
         <label class="col-md-2">Drugs</label>
         <div class="col-md-10">
-            <input type="text" ng-model="prescription.drugs" name="drugs" ng-required="true" class="form-control"/>
-            <p ng-show="prescriptionForm.address.$error.required && (prescriptionForm.$submitted || prescriptionForm.address.$dirty)" class="text-danger">Please Enter Address</p>
+            <input type="text" ng-model="prescription.drug" name="drug" ng-required="true" class="form-control"/>
+            <p ng-show="prescriptionForm.drug.$error.required && (prescriptionForm.$submitted || prescriptionForm.drug.$dirty)" class="text-danger">Please Select Drug</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2">Drug Type</label>
+        <div class="col-md-10">
+            <select ng-model="prescription.drugType" name="drugType" ng-required="true" class="form-control">
+                <option value="tablet">Tablet</option>
+                <option value="syrup">Syrup</option>
+            </select>
+            <p ng-show="prescriptionForm.drugType.$error.required && (prescriptionForm.$submitted || prescriptionForm.drugType.$dirty)" class="text-danger">Please Enter Date</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2">Dosage</label>
+        <div class="col-md-10">
+            <input type="text" ng-model="prescription.dosage" name="dosage" ng-required="true" class="form-control"/>
+            <p ng-show="prescriptionForm.dosage.$error.required && (prescriptionForm.$submitted || prescriptionForm.dosage.$dirty)" class="text-danger">Please Enter Date</p>
         </div>
     </div>
 
@@ -40,3 +79,4 @@
         </div>
     </div>
 </form>
+</div>

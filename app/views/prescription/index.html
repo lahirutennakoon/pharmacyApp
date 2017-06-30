@@ -1,4 +1,4 @@
-<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
 
         <div class="x_content">
@@ -7,20 +7,28 @@
                 <caption><h2>Prescriptions Listing</h2></caption>
                 <tr>
                 <tr>
-                    <th>Patient Name</th>
+                    <th>Doctor's Name</th>
+                    <th>Patient's Name</th>
                     <th>Patient Age</th>
-                    <th>Date</th>
+                    <th>Diagnosis</th>
+                    <th>Date (mm/dd/yyyy)</th>
                     <th>Drugs</th>
+                    <th>Drug Type</th>
+                    <th>Dosage</th>
                     <th>Actions</th>
                 </tr>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="prescription in prescriptions">
+                    <td> {{ prescription.doctorName}}</td>
                     <td> {{ prescription.patientName }}</td>
                     <td> {{ prescription.patientAge }} </td>
+                    <td> {{ prescription.diagnosis }} </td>
                     <td>{{ prescription.date | date:'MM/dd/yyyy' }}</td>
-                    <td>{{ prescription.drugs }}</td>
+                    <td>{{ prescription.drug }}</td>
+                    <td>{{ prescription.drugType }}</td>
+                    <td>{{ prescription.dosage }}</td>
                     <td>
                         <a ui-sref="editPrescription({id:prescription._id})">Edit</a> |
                         <a href="#" ng-click="deletePrescription(prescription._id)">Delete</a>

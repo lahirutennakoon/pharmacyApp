@@ -4,15 +4,15 @@ var mongoose = require("mongoose"),
 
 var prescriptionSchema = new Schema({
     _id: { type: objectId, auto: true },
+    doctorName: { type: String, required: true },
     patientName: { type: String, required: true },
     patientAge: { type: Number, required: true },
+    diagnosis: { type: String, required: true },
     date: { type: Date, required: true, default:Date.now },
-    drugs: {type: Array, required: true}
-}
-/*, {
-    versionKey: false
-}*/
-);
+    drug: {type: String, required: true},
+    drugType: {type: String, required: true},
+    dosage: {type: String, required: true}
+});
 
 var prescription = mongoose.model('prescriptions', prescriptionSchema);
 

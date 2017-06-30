@@ -33,7 +33,7 @@ router.get("/", function(req, res) {
     var id = req.params.id;
     var obj = req.body;
 
-    prescription.findByIdAndUpdate(id, { patientName: obj.patientName, patientAge: obj.patientAge, date: obj.date, drugs: obj.drugs },
+    prescription.findByIdAndUpdate(id, { doctorName: obj.doctorName, patientName: obj.patientName, patientAge: obj.patientAge, diagnosis: obj.diagnosis, date: obj.date, drug: obj.drug, drugType: obj.drugType, dosage: obj.dosage},
         function(err) {
             if (err) {
                 res.send("error");
