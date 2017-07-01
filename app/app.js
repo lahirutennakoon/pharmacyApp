@@ -1,90 +1,60 @@
-(function() {
+/**
+ * Created by Vimukthi Mudalige on 6/25/2017.
+ */
+(function () {
     'use strict';
 
-    angular.module('app', [
-        "ui.router"
-    ])
-        .config(function($stateProvider, $urlRouterProvider)
-        {
-            $urlRouterProvider.otherwise("login.html");
+    angular
+        .module('app', ['ui.router'])
+        .config(config)
+        .run(run);
 
-            $stateProvider.state("login", {
-                url: "/login.html",
-                templateUrl: "/login.html"
-            }).state("home", {
-                url: "/home.html",
-                templateUrl: "/home.html"
-            }).state("users", {
-                url: "/users",
-                templateUrl: "/views/user/index.html",
-                controller: "userController"
-            }).state("add_user", {
-                url: "/adduser",
-                templateUrl: "/views/user/add_user.html",
-                controller: "userController"
-            }).state("edit", {
-                url: "/edit/:id",
-                templateUrl: "/views/user/create.html",
-                controller: "userController"
-            }).state("details", {
-                url: "/details/:id",
-                templateUrl: "/views/user/details.html",
-                controller: "userController"
-            }).state("prescriptions", {
-                url: "/prescription",
-                templateUrl: "/views/prescription/index.html",
-                controller: "prescriptionController"
-            }).state("createPrescription", {
-                url: "/prescription/createPrescription",
-                templateUrl: "/views/prescription/createPrescription.html",
-                controller: "prescriptionController"
-            }).state("editPrescription", {
-                url: "/prescription/editPrescription/:id",
-                templateUrl: "/views/prescription/createPrescription.html",
-                controller: "prescriptionController"
-            }).state("detailsPrescription", {
-                url: "/prescription/detailsPrescription/:id",
-                templateUrl: "/views/prescription/details.html",
-                controller: "prescriptionController"
+    function config($stateProvider, $urlRouterProvider) {
+        // default route
+        $urlRouterProvider.otherwise("/");
 
-                //ashen
-            }).state("drugs", {
-                url: "/drugtable",
-                templateUrl: "/views/drugAS/druglist.html",
-                controller: "drugControllerAS"
-
-            }).state("createDrug", {
-                url: "/createDrug",
-                templateUrl: "/views/drugAS/createDrug.html",
-                controller: "drugControllerAS"
-
-            }).state("editDrug", {
-                url: "/drugtable/createDrug/:id",
-                templateUrl: "/views/drugAS/createDrug.html",
-                controller: "drugControllerAS"
-
-            }).state("placeOrder", {
-                url: "/drugtable/placeOrder/:id",
-                templateUrl: "/views/drugAS/mailOrder.html",
-                controller: "drugControllerAS"
-
-
-            }).state("emails", {
-                url: "/mailtable",
-                templateUrl: "/views/drugAS/order.html",
-                controller: "emailController"
-
-
-
-
-            //Ruki
-            }).state("addDrug",{
-                url:"/addDrug",
-                templateUrl:"/views/Drug/add.html",
-                controller:"drugController"
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: 'home/index.html',
+                controller: 'Home.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'home' }
+            })
+            .state('account', {
+                url: '/account',
+                templateUrl: 'account/index.html',
+                controller: 'Account.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'account' }
+            })
+            .state('add_patient', {
+                url: '/add_patient',
+                templateUrl: 'add_patient/index.html',
+                controller: 'Add_Patient.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'add_patient' }
             });
-        })
-        .constant("globalConfig", {
-            apiAddress: 'http://localhost:3000/api'
+
+    }
+
+    function run($http, $rootScope, $window) {
+        // add JWT token as default auth header
+        $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
+
+        // update active tab on state change
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            $rootScope.activeTab = toState.data.activeTab;
         });
+    }
+
+    // manually bootstrap angular after the JWT token is retrieved from server
+    $(function () {
+        // get JWT token from server
+        $.get('/app/token', function (token) {
+            window.jwtToken = token;
+
+            angular.bootstrap(document, ['app']);
+        });
+    });
 })();

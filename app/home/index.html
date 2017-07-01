@@ -1,0 +1,128 @@
+<h1>Welcome to the Pharmacy System, {{vm.user.firstName}}</h1>
+
+<div class="form-container">
+    <!--
+    <form method="post">
+        <div class="form-group">
+            <label for="firstName">Movie Name</label>
+            <div>
+            <select class="form-control" ng-model="selectedCar">
+                <option value="" selected="selected" >Select Movie Title</option>
+
+                <option ng-repeat="movie in movies" value="{{movie.name}}"></option>
+
+            </select>
+            </div>
+        </div>
+
+
+        <div class="form-group"><label>Movie Date</label>
+            <div>
+                <select id="selectDate" class="form-control" ng-model="selectDate">
+                    <option value="" selected="selected" >Select Date</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div>
+            <label for="movietime">Movie Time</label>
+            <select class="form-control" ng-model="#">
+                <option value="morning">10.30 AM</option>
+                <option value="afternoon">2.30 PM</option>
+                <option value="evening">4.30 PM</option>
+                <option value="night">7.30 PM</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="cinema">Cinema Complex</label>
+            <select class="form-control" ng-model="#">
+                <option value="savoy">Savoy</option>
+                <option value="regal">Regal</option>
+                <option value="majestic_city">Majestic City</option>
+                <option value="riverside">Riverside</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="cinema">Seat Type</label>
+            <select class="form-control" ng-model="#">
+                <option value="rear">Rear</option>
+                <option value="front">Front</option>
+                <option value="balcony">Balcony</option>
+                <option value="vip">VIP</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Ticket Quantity</label>
+            <input type="text" id="quantity" class="form-control" ng-model="vm.ticket.quantity" value="1" required />
+        </div>
+
+
+        <div>
+            <p>Snacks</p>
+            <input type="checkbox" ng-model="vm.ticket.extra">
+            <p>Water Bottles</p>
+            <input type="checkbox" ng-model="vm.ticket.extra2">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="creditcardpay()">Pay via Credit Card</button>
+            <button class="btn btn-primary" ng-click="">Pay via Mobile Bill</button>
+            <button class="btn btn-danger" ng-click="">Cancel</button>
+        </div>
+    </form>
+
+
+-->
+
+
+<!-- next one del-->
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Patient Details<small>Log</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <p class="text-muted font-13 m-b-30">
+                    Patient Details, their drug prescription usage history and Prescription history can be reviewed and printed using this.
+                </p>
+                <table id="datatable-buttons" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Contact Number</th>
+                        <th>NIC</th>
+                        <th>Age</th>
+                        <th>Lastly Purchased Date</th>
+                        <th>Cost</th>
+                    </tr>
+
+
+                    </thead>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

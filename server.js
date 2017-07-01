@@ -1,37 +1,37 @@
-//========= importing modules ==========
-var express = require('express'),
-    path = require('path'),
-    bodyParser = require('body-parser'),
-    routes = require('./server/routes/web'), //web routes
-    apiRoutes = require('./server/routes/api'), //api routes
-    connection = require("./server/config/db"); //mongodb connection
+/**
+ * Created by Vimukthi Mudalige on 6/25/2017.
+ */
 
-// creating express server
+require('rootpath')();
+var express = require('express');
 var app = express();
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var expressJwt = require('express-jwt');
+var config = require('config.json');
 
-//========= configuration ==========
-
-//===== get all the data from the body (POST)
-
-// parse application/json
-app.use(bodyParser.json());
-
-// parse application/x-www-form-urlencoded
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/app/views');
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
 
-// setting static files location './app' for angular app html and js
-app.use(express.static(path.join(__dirname, 'app')));
-// setting static files location './node_modules' for libs like angular, bootstrap
-app.use(express.static('node_modules'));
+// use JWT auth to secure the api
+app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register'] }));
 
-// configure our routes
-app.use('/', routes);
-app.use('/api', apiRoutes);
+// routes
+app.use('/login', require('./app/controllers/login.controller'));
+app.use('/register', require('./app/controllers/register.controller'));
+app.use('/app', require('./app/controllers/app.controller'));
+app.use('/api/users', require('./app/controllers/api/users.controller'));
+app.use('/api/add_patient', require('./app/controllers/api/patient.controller'));
 
-// setting port number for running server
-var port = process.env.port || 3000;
+// make '/app' default route
+app.get('/', function (req, res) {
+    return res.redirect('/app');
+});
 
-// starting express server
-app.listen(port, function() {
-    console.log("Server is running at : http://localhost:" + port);
+// start server
+var server = app.listen(3000, function () {
+    console.log('Server is running at localhost' + server.address().address + ':' + server.address().port);
 });
