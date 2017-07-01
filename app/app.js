@@ -34,27 +34,32 @@
                 controller: 'Add_Patient.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'add_patient' }
-            });
+            })
+            .state("createPrescription", {
+            url: "/prescription/createPrescription",
+            templateUrl: "/views/prescription/createPrescription.html",
+            controller: "prescriptionController"
+        });
 
     }
 
     function run($http, $rootScope, $window) {
-        // add JWT token as default auth header
-        $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
+    // add JWT token as default auth header
+    $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
 
-        // update active tab on state change
-        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            $rootScope.activeTab = toState.data.activeTab;
-        });
-    }
-
-    // manually bootstrap angular after the JWT token is retrieved from server
-    $(function () {
-        // get JWT token from server
-        $.get('/app/token', function (token) {
-            window.jwtToken = token;
-
-            angular.bootstrap(document, ['app']);
-        });
+    // update active tab on state change
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        $rootScope.activeTab = toState.data.activeTab;
     });
+}
+
+// manually bootstrap angular after the JWT token is retrieved from server
+$(function () {
+    // get JWT token from server
+    $.get('/app/token', function (token) {
+        window.jwtToken = token;
+
+        angular.bootstrap(document, ['app']);
+    });
+});
 })();

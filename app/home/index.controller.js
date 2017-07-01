@@ -8,7 +8,7 @@
         .module('app')
         .controller('Home.IndexController', Controller);
 
-    function Controller(UserService) {
+    function Controller(UserService, PatientService) {
         var vm = this;
 
         vm.user = null;
@@ -20,7 +20,15 @@
             UserService.GetCurrent().then(function (user) {
                 vm.user = user;
             });
+
+            UserService.GetAll().then(function (users){
+                vm.userList = users;
+            })
         }
+
+
+
+
     }
 
 })();

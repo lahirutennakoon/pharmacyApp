@@ -19,6 +19,14 @@ router.get("/", function(req, res) {
         }
         res.send(data[0]);
     });
+}).get("/users", function(req, res) {
+    user.find({}, function(err, data) {
+        if (err) {
+            res.send("error");
+            return;
+        }
+        res.send(data);
+    });
 }).post("/", function(req, res) {
     var obj = req.body;
     var model = new user(obj);
