@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+
+  "connectionString": "mongodb://localhost:27017/mean_db",
+  "apiUrl": "http://localhost:3000/api",
+  "secret": "extra_security775"
+
+}
